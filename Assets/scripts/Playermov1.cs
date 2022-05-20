@@ -8,10 +8,13 @@ public class Playermov1 : MonoBehaviour
     public GameObject oponentBarnyard;
     public GameObject circle_chicken;
     private GameObject chicken;
+    public GameObject circle_goldchicken;
+    private GameObject goldchicken;
     public GameObject circle_fox;
     public GameObject circle_battle_fox;
     private GameObject fox;
     private bool chicken_caught;
+    private bool goldchicken_caught;
     private bool fox_caught;
 
     private float itsBarnyard_min_x;
@@ -27,6 +30,8 @@ public class Playermov1 : MonoBehaviour
     {
         circle_chicken.SetActive(false);
         chicken_caught = false;
+        circle_goldchicken.SetActive(false);
+        goldchicken_caught = false;
         circle_fox.SetActive(false);
         circle_battle_fox.SetActive(false);
         fox_caught = false;
@@ -53,6 +58,19 @@ public class Playermov1 : MonoBehaviour
                 Vector3 randomPosition = new Vector3(Random.Range(itsBarnyard_min_x, itsBarnyard_max_x), 0.5f, Random.Range(itsBarnyard_min_z, itsBarnyard_max_z));
                 chicken.transform.position = randomPosition;
                 chicken_caught = false;
+                GameStateManager.Instance.Add1PointP1();
+            }
+
+
+            //Release gold chicken
+            if (goldchicken_caught == true)
+            {
+                goldchicken.SetActive(true);
+                circle_goldchicken.SetActive(false);
+                Vector3 randomPosition = new Vector3(Random.Range(itsBarnyard_min_x, itsBarnyard_max_x), 0.5f, Random.Range(itsBarnyard_min_z, itsBarnyard_max_z));
+                goldchicken.transform.position = randomPosition;
+                goldchicken_caught = false;
+                GameStateManager.Instance.Add3PointP1();
             }
 
         }
@@ -77,6 +95,14 @@ public class Playermov1 : MonoBehaviour
                 other.gameObject.SetActive(false);
                 circle_chicken.SetActive(true);
                 chicken_caught = true;
+            }
+            if ((other.gameObject.CompareTag("GoldenChicken")) && (goldchicken_caught == false) && (fox_caught == false))
+            {
+                Debug.Log("collisionnnn with chicken");
+                goldchicken = other.gameObject;
+                other.gameObject.SetActive(false);
+                circle_goldchicken.SetActive(true);
+                goldchicken_caught = true;
             }
             if ((other.gameObject.CompareTag("Fox"))&& (chicken_caught == false) && (fox_caught == false))
             {
