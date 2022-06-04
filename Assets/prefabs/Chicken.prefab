@@ -64,6 +64,7 @@ GameObject:
   - component: {fileID: 7657750124210088949}
   - component: {fileID: 7657750124210088953}
   - component: {fileID: 7657750124210088954}
+  - component: {fileID: 663743072041085099}
   m_Layer: 0
   m_Name: Chicken
   m_TagString: Chicken
@@ -177,6 +178,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!135 &663743072041085099
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7657750124210088948}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.73
+  m_Center: {x: 0, y: 6, z: 0}
 --- !u!1001 &7657750124072907699
 PrefabInstance:
   m_ObjectHideFlags: 0
