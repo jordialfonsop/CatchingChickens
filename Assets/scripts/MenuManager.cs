@@ -34,7 +34,7 @@ public class MenuManager : MonoBehaviour
         Exit1 = Exit1.GetComponent<ExitP1>();
         Exit2 = Exit2.GetComponent<ExitP2>();
         if (P1.is1Inside == true && P2.is2Inside == true){
-            StartCoroutine(LoadLevel("IntSysTemplate", music));
+            StartCoroutine(LoadLevel("Game", music));
         }
         if (Exit1.is1Exiting == true && Exit2.is2Exiting == true){
             StartCoroutine(QuitGame(music));
