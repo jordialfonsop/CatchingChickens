@@ -12,6 +12,7 @@ public class UIManager : MonoBehaviour
     public Text PointsP2;
     public Text timer_1;
     public Text timer_2;
+    public Text gameOverText;
     public GameObject timer;
     private float timeRemaining;
 
@@ -43,14 +44,17 @@ public class UIManager : MonoBehaviour
         if (PointSystem.Instance.pointsP1> PointSystem.Instance.pointsP2)
         {
             Debug.Log("Player 1 wins!");
+            gameOverText.text = "Player 1 wins!";
         }
         else if (PointSystem.Instance.pointsP1 < PointSystem.Instance.pointsP2)
         {
             Debug.Log("Player 2 wins!");
+            gameOverText.text = "Player 2 wins!";
         }
         else
         {
             Debug.Log("It's a draw!");
+            gameOverText.text = "It's a draw!";
         }
     }
 }

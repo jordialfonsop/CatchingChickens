@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+using UnityEngine.SceneManagement;
+
 public class GameStateManager : MonoBehaviour
 {
     public float timeBeforeFirstFox;
@@ -24,6 +26,13 @@ public class GameStateManager : MonoBehaviour
     private float Barnyard1_max_x;
     private float Barnyard2_min_x;
     private float Barnyard2_max_x;
+
+    private int playcount = 0;
+
+    public Animator transition;
+    public AudioSource music;
+    public float waitTime = 1f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -59,6 +68,7 @@ public class GameStateManager : MonoBehaviour
         if ((timer.GetComponent<Timer>().timeRemaining <= 0)|| (numChickensPlayArea == 0))
         {
             UIManager.Instance.GameOver();
+            StartCoroutine(LoadLevel("MainMenu"));
         }
         if (((timer.GetComponent<Timer>().timeRemaining < 60) || (numChickensPlayArea == 4)) && (!goldenChickenSpawned))
         {
@@ -114,7 +124,23 @@ public class GameStateManager : MonoBehaviour
         numChickensPlayArea = chickensNotInBarnyard.Count;
     }
          
+    IEnumerator LoadLevel(string level){
+        if (playcount == 0){
+            playcount++;
+            music.Stop();
+            SoundManager.Instance.PlayGameOver();
+            
+            yield return new WaitForSeconds(10);
 
+            transition.SetTrigger("Start");
+
+            yield return new WaitForSeconds(waitTime);
+
+            SceneManager.LoadScene(level);
+        }
+        
+
+    }
 
 
 }

@@ -12,6 +12,9 @@ public class MenuManager : MonoBehaviour
     [SerializeField] public MenuP1 P1;
     [SerializeField] public MenuP2 P2;
     float a;
+
+    private int playcount = 0;
+
     public Animator transition;
     public AudioSource music;
     public float waitTime = 1f;
@@ -32,21 +35,22 @@ public class MenuManager : MonoBehaviour
     }
 
     IEnumerator LoadLevel(string level, AudioSource audioSource){
+        if (playcount == 0){
+            playcount++;
+            transition.SetTrigger("Start");
 
-        transition.SetTrigger("Start");
+            float startVolume = audioSource.volume;
+    
+            while (audioSource.volume > 0) {
+                audioSource.volume -= startVolume * Time.deltaTime / fadeTime;
+    
+                yield return null;
+            }
 
-        float startVolume = audioSource.volume;
- 
-        while (audioSource.volume > 0) {
-            audioSource.volume -= startVolume * Time.deltaTime / fadeTime;
- 
-            yield return null;
+            yield return new WaitForSeconds(waitTime);
+
+            SceneManager.LoadScene(level);
         }
-
-        yield return new WaitForSeconds(waitTime);
-
-        SceneManager.LoadScene(level);
-
     }
 
 }
