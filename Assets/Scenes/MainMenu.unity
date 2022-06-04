@@ -838,8 +838,8 @@ MonoBehaviour:
   P2: {fileID: 391967579}
   transition: {fileID: 844402513}
   music: {fileID: 653919483}
-  waitTime: 0.7
-  fadeTime: 90
+  waitTime: 3
+  fadeTime: 1.5
 --- !u!1 &1681546032
 GameObject:
   m_ObjectHideFlags: 0
