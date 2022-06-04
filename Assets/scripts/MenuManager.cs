@@ -11,6 +11,8 @@ public class MenuManager : MonoBehaviour
 
     [SerializeField] public MenuP1 P1;
     [SerializeField] public MenuP2 P2;
+    [SerializeField] public ExitP1 Exit1;
+    [SerializeField] public ExitP2 Exit2;
     float a;
 
     private int playcount = 0;
@@ -29,8 +31,13 @@ public class MenuManager : MonoBehaviour
     {
         P1 = P1.GetComponent<MenuP1>();
         P2 = P2.GetComponent<MenuP2>();
+        Exit1 = Exit1.GetComponent<ExitP1>();
+        Exit2 = Exit2.GetComponent<ExitP2>();
         if (P1.is1Inside == true && P2.is2Inside == true){
             StartCoroutine(LoadLevel("IntSysTemplate", music));
+        }
+        if (Exit1.is1Exiting == true && Exit2.is2Exiting == true){
+            StartCoroutine(QuitGame(music));
         }
     }
 
@@ -50,6 +57,25 @@ public class MenuManager : MonoBehaviour
             yield return new WaitForSeconds(waitTime);
 
             SceneManager.LoadScene(level);
+        }
+    }
+
+    IEnumerator QuitGame(AudioSource audioSource){
+        if (playcount == 0){
+            playcount++;
+            float startVolume = audioSource.volume;
+    
+            while (audioSource.volume > 0) {
+                audioSource.volume -= startVolume * Time.deltaTime / fadeTime;
+    
+                yield return null;
+            }
+
+            SoundManager.Instance.PlayQuit();
+
+            yield return new WaitForSeconds(3);
+
+            Application.Quit();
         }
     }
 
