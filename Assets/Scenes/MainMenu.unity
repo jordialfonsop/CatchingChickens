@@ -450,7 +450,7 @@ MonoBehaviour:
     Take a GOLDEN CHICKEN to your barnyard to get three points.\n- When a FOX spawns,
     it will eat a chicken every 10 seconds.\n- Take the FOX to the rival's barnyard
     for it to start eating their chickens\n- If it's on your barnyard, Go to it and
-    wait 3 seconds to remove it.\n- GAME ENDS when the TIME IS UP or there's NO CHICKENS
+    wait 3 seconds to remove it.\n- GAME ENDS when TIME IS UP or there's NO CHICKENS
     LEFT.\n- WINS the player that has THE MOST POINTS."
 --- !u!222 &288949563
 CanvasRenderer:
