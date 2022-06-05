@@ -376,6 +376,90 @@ MonoBehaviour:
   FoxFigth: {fileID: 8300000, guid: 146568e0d8553464d951fcd51ab0d71c, type: 3}
   GameOver: {fileID: 8300000, guid: 711d98ae13a3b2944864af78a940c0b7, type: 3}
   Quit: {fileID: 8300000, guid: caa73b7adcd089e4196fc5ff6f5e04c0, type: 3}
+--- !u!1 &288949560
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 288949561}
+  - component: {fileID: 288949563}
+  - component: {fileID: 288949562}
+  m_Layer: 5
+  m_Name: Instructions
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &288949561
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 288949560}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8799485285930198585}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 5, y: 84}
+  m_SizeDelta: {x: 475, y: 284.44}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &288949562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 288949560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 14
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 0
+    m_MaxSize: 50
+    m_Alignment: 1
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1.24
+  m_Text: "How to Play: \n- Take a CHICKEN to your barnyard to get one point.\n-
+    Take a GOLDEN CHICKEN to your barnyard to get three points.\n- When a FOX spawns,
+    it will eat a chicken every 10 seconds.\n- Take the FOX to the rival's barnyard
+    for it to start eating their chickens\n- If it's on your barnyard, Go to it and
+    wait 3 seconds to remove it.\n- Game ends when the TIME IS UP or there's NO CHICKENS
+    LEFT.\n- WINS the player that have THE MOST POINTS."
+--- !u!222 &288949563
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 288949560}
+  m_CullTransparentMesh: 0
 --- !u!1001 &360262302
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1933,6 +2017,31 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -231.6
       objectReference: {fileID: 0}
+    - target: {fileID: 8799485284096094714, guid: 1bb056fd8b916b84bb384fa08a5bfcf1,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8799485284096094714, guid: 1bb056fd8b916b84bb384fa08a5bfcf1,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -116
+      objectReference: {fileID: 0}
+    - target: {fileID: 8799485284096094714, guid: 1bb056fd8b916b84bb384fa08a5bfcf1,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8799485284096094715, guid: 1bb056fd8b916b84bb384fa08a5bfcf1,
+        type: 3}
+      propertyPath: m_Text
+      value: Get in the circles to begin game or quit
+      objectReference: {fileID: 0}
+    - target: {fileID: 8799485284096094715, guid: 1bb056fd8b916b84bb384fa08a5bfcf1,
+        type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 18
+      objectReference: {fileID: 0}
     - target: {fileID: 8799485285648425952, guid: 1bb056fd8b916b84bb384fa08a5bfcf1,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1995,3 +2104,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1bb056fd8b916b84bb384fa08a5bfcf1, type: 3}
+--- !u!224 &8799485285930198585 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 8799485285769947734, guid: 1bb056fd8b916b84bb384fa08a5bfcf1,
+    type: 3}
+  m_PrefabInstance: {fileID: 8799485285930198584}
+  m_PrefabAsset: {fileID: 0}
