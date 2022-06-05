@@ -69,10 +69,21 @@ public class GameStateManager : MonoBehaviour
         NumChickensInPlayarea();
         bool does1HaveChickens = Player1.GetComponent<Playermov1>().chicken_caught;
         bool does2HaveChickens = Player2.GetComponent<Playermov2>().chicken_caught;
+        
         if ((timer.GetComponent<Timer>().timeRemaining <= 0)|| (numChickensPlayArea == 0 && !does1HaveChickens && !does2HaveChickens) )
         {
             UIManager.Instance.GameOver();
-            StartCoroutine(LoadLevel("MainMenu"));
+            bool isDraw;
+            if (PointSystem.Instance.pointsP1 == PointSystem.Instance.pointsP2)
+            {
+                isDraw = true;
+                StartCoroutine(LoadLevel("MainMenu", isDraw));
+            }
+            else
+            {
+                isDraw = false;
+                StartCoroutine(LoadLevel("MainMenu", isDraw));
+            }
         }
         if (((timer.GetComponent<Timer>().timeRemaining < 60) || (numChickensPlayArea == 4)) && (!goldenChickenSpawned))
         {
@@ -128,13 +139,24 @@ public class GameStateManager : MonoBehaviour
         numChickensPlayArea = chickensNotInBarnyard.Count;
     }
          
-    IEnumerator LoadLevel(string level){
+    IEnumerator LoadLevel(string level, bool isDraw){
         if (playcount == 0){
             playcount++;
             music.Stop();
-            SoundManager.Instance.PlayGameOver();
+            if (isDraw){
+                SoundManager.Instance.PlayDingDingDing();
+                yield return new WaitForSeconds(2);
+                SoundManager.Instance.PlayGameOver();
+                yield return new WaitForSeconds(10);
+            }else{
+                SoundManager.Instance.PlayDingDingDing();
+                yield return new WaitForSeconds(2);
+                SoundManager.Instance.PlayVictory();
+                yield return new WaitForSeconds(8);
+                SoundManager.Instance.PlayCheering();
+                yield return new WaitForSeconds(5);
+            }
             
-            yield return new WaitForSeconds(10);
 
             transition.SetTrigger("Start");
 
