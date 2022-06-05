@@ -13,6 +13,9 @@ public class SoundManager : MonoBehaviour
     public AudioClip FoxKill;
     public AudioClip FoxFigth;
     public AudioClip GameOver;
+    public AudioClip Victory;
+    public AudioClip Cheering;
+    public AudioClip DingDingDing;
     public AudioClip Quit;
 
     private Vector3 cameraPosition; 
@@ -61,6 +64,18 @@ public class SoundManager : MonoBehaviour
     public void PlayGameOver()
     {
         PlaySound(GameOver);
+    }
+    public void PlayVictory()
+    {
+        PlaySound(Victory);
+    }
+    public void PlayCheering()
+    {
+        PlaySound(Cheering);
+    }
+    public void PlayDingDingDing()
+    {
+        PlaySound(DingDingDing);
     }
     public void PlayQuit()
     {
