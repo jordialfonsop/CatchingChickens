@@ -14,10 +14,11 @@ public class Playermov2 : MonoBehaviour
     public GameObject circle_battle_fox;
     private GameObject fox;
     public GameObject timer;
-    private bool chicken_caught;
+    public GameObject FoxEater;
+    [System.NonSerialized]
+    public bool chicken_caught;
     private bool fox_caught;
     private bool battling_fox;
-    public GameObject FoxEater;
     private float itsBarnyard_min_x;
     private float itsBarnyard_max_x;
     private float itsBarnyard_min_z;

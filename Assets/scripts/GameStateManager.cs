@@ -22,6 +22,8 @@ public class GameStateManager : MonoBehaviour
     private List<GameObject> chickensNotInBarnyard;
     public GameObject Barnyard1;
     public GameObject Barnyard2;
+    public GameObject Player1;
+    public GameObject Player2;
     private float Barnyard1_min_x;
     private float Barnyard1_max_x;
     private float Barnyard2_min_x;
@@ -65,7 +67,9 @@ public class GameStateManager : MonoBehaviour
         }
 
         NumChickensInPlayarea();
-        if ((timer.GetComponent<Timer>().timeRemaining <= 0)|| (numChickensPlayArea == 0))
+        bool does1HaveChickens = Player1.GetComponent<Playermov1>().chicken_caught;
+        bool does2HaveChickens = Player2.GetComponent<Playermov2>().chicken_caught;
+        if ((timer.GetComponent<Timer>().timeRemaining <= 0)|| (numChickensPlayArea == 0 && !does1HaveChickens && !does2HaveChickens) )
         {
             UIManager.Instance.GameOver();
             StartCoroutine(LoadLevel("MainMenu"));
