@@ -4360,6 +4360,32 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1308443824607235076, guid: 0990423822644ae41a02fa5d259694b7,
+        type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 2233abf15fb23f74db078f5afea51cba,
+        type: 3}
+    - target: {fileID: 1308443824607235076, guid: 0990423822644ae41a02fa5d259694b7,
+        type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 1308443824607235076, guid: 0990423822644ae41a02fa5d259694b7,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1308443824607235076, guid: 0990423822644ae41a02fa5d259694b7,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1308443824607235076, guid: 0990423822644ae41a02fa5d259694b7,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1421569333418953490, guid: 0990423822644ae41a02fa5d259694b7,
         type: 3}
       propertyPath: m_LocalPosition.z
@@ -4374,6 +4400,79 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 519
+      objectReference: {fileID: 0}
+    - target: {fileID: 1615845107336544053, guid: 0990423822644ae41a02fa5d259694b7,
+        type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 1615845107336544053, guid: 0990423822644ae41a02fa5d259694b7,
+        type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 2233abf15fb23f74db078f5afea51cba,
+        type: 3}
+    - target: {fileID: 3899714289194390857, guid: 0990423822644ae41a02fa5d259694b7,
+        type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 3899714289194390857, guid: 0990423822644ae41a02fa5d259694b7,
+        type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 2233abf15fb23f74db078f5afea51cba,
+        type: 3}
+    - target: {fileID: 4873551599182136662, guid: 0990423822644ae41a02fa5d259694b7,
+        type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 2233abf15fb23f74db078f5afea51cba,
+        type: 3}
+    - target: {fileID: 4873551599182136662, guid: 0990423822644ae41a02fa5d259694b7,
+        type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 4873551599182136662, guid: 0990423822644ae41a02fa5d259694b7,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4873551599182136662, guid: 0990423822644ae41a02fa5d259694b7,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4873551599182136662, guid: 0990423822644ae41a02fa5d259694b7,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7655188264742636778, guid: 0990423822644ae41a02fa5d259694b7,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 7655188264742636778, guid: 0990423822644ae41a02fa5d259694b7,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 8076854592591509696, guid: 0990423822644ae41a02fa5d259694b7,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8076854592591509696, guid: 0990423822644ae41a02fa5d259694b7,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 8076854592591509696, guid: 0990423822644ae41a02fa5d259694b7,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 70
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0990423822644ae41a02fa5d259694b7, type: 3}
