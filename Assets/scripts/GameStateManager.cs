@@ -48,7 +48,12 @@ public class GameStateManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (timer.GetComponent<Timer>().timeRemaining < time - timeBeforeFirstFox && timer.GetComponent<Timer>().timeRemaining > 0)
+
+        NumChickensInPlayarea();
+        bool does1HaveChickens = Player1.GetComponent<Playermov1>().chicken_caught;
+        bool does2HaveChickens = Player2.GetComponent<Playermov2>().chicken_caught;
+
+        if (timer.GetComponent<Timer>().timeRemaining < time - timeBeforeFirstFox && timer.GetComponent<Timer>().timeRemaining > 0 && numChickensPlayArea != 0)
         {
             if (firstFoxSpawned)
             {
@@ -65,10 +70,6 @@ public class GameStateManager : MonoBehaviour
                 firstFoxSpawned = true;
             }
         }
-
-        NumChickensInPlayarea();
-        bool does1HaveChickens = Player1.GetComponent<Playermov1>().chicken_caught;
-        bool does2HaveChickens = Player2.GetComponent<Playermov2>().chicken_caught;
         
         if ((timer.GetComponent<Timer>().timeRemaining <= 0)|| (numChickensPlayArea == 0 && !does1HaveChickens && !does2HaveChickens) )
         {
