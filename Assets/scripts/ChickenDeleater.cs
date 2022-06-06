@@ -157,11 +157,10 @@ public class ChickenDeleater : MonoBehaviour
         }
         if ((foxInGame)&&(timeLastEaten - 10 > timer.GetComponent<Timer>().timeRemaining))
         {
-            Destroy(best_chicken);
-            SoundManager.Instance.PlayChickenKilled();
-            timeLastEaten = timer.GetComponent<Timer>().timeRemaining;
-
             if( timer.GetComponent<Timer>().timeRemaining > 0){
+                Destroy(best_chicken);
+                SoundManager.Instance.PlayChickenKilled();
+                timeLastEaten = timer.GetComponent<Timer>().timeRemaining;
                 if (best_chicken.CompareTag("GoldenChicken"))
                 {
                     if(foxInBarnyard1){
