@@ -126,8 +126,8 @@ public class ChickenDeleater : MonoBehaviour
                 }
                 if (chickensNotInBarnyard.Count > 0)
                 {
-                    if (chickensNotInBarnyard.Count > 1)
-                    {
+                    //if (chickensNotInBarnyard.Count >= 1)
+                    //{
                         GameObject Fox = GameObject.FindGameObjectsWithTag("Fox")[0];
                         float x = Fox.transform.position.x;
                         float z = Fox.transform.position.z;
@@ -147,7 +147,17 @@ public class ChickenDeleater : MonoBehaviour
                                 }
                             }
                         }
-                    }
+                        if(goldenChicken.Length != 0){
+                            float chickenx = goldenChicken[0].transform.position.x;
+                            float chickenz = goldenChicken[0].transform.position.z;
+                            float d = Mathf.Sqrt((x - chickenx) * (x - chickenx) + (z - chickenz) * (z - chickenz));
+                            if (d < best_distance)
+                            {
+                                best_chicken = goldenChicken[0];
+                                best_distance = d;
+                            }
+                        }
+                    //}
                 }
                 else
                 {
@@ -158,18 +168,7 @@ public class ChickenDeleater : MonoBehaviour
         if ((foxInGame)&&(timeLastEaten - 10 > timer.GetComponent<Timer>().timeRemaining))
         {
             if( timer.GetComponent<Timer>().timeRemaining > 0){
-                Destroy(best_chicken);
-                SoundManager.Instance.PlayChickenKilled();
-                timeLastEaten = timer.GetComponent<Timer>().timeRemaining;
-                if (best_chicken.CompareTag("GoldenChicken"))
-                {
-                    if(foxInBarnyard1){
-                        PointSystem.Instance.Erase3PointsP1();
-                    }else if(foxInBarnyard2){
-                        PointSystem.Instance.Erase3PointsP2();
-                    }
-                }
-                else
+                if (best_chicken.CompareTag("Chicken"))
                 {
                     if(foxInBarnyard1){
                         PointSystem.Instance.ErasePointP1();
@@ -177,6 +176,17 @@ public class ChickenDeleater : MonoBehaviour
                         PointSystem.Instance.ErasePointP2();
                     }
                 }
+                else
+                {
+                    if(foxInBarnyard1){
+                        PointSystem.Instance.Erase3PointsP1();
+                    }else if(foxInBarnyard2){
+                        PointSystem.Instance.Erase3PointsP2();
+                    }
+                }
+                Destroy(best_chicken);
+                SoundManager.Instance.PlayChickenKilled();
+                timeLastEaten = timer.GetComponent<Timer>().timeRemaining;
             }
             
         }
