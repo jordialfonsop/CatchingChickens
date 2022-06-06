@@ -72,6 +72,7 @@ public class GameStateManager : MonoBehaviour
         
         if ((timer.GetComponent<Timer>().timeRemaining <= 0)|| (numChickensPlayArea == 0 && !does1HaveChickens && !does2HaveChickens) )
         {
+            timer.GetComponent<Timer>().timeRemaining = 0;
             UIManager.Instance.GameOver();
             bool isDraw;
             if (PointSystem.Instance.pointsP1 == PointSystem.Instance.pointsP2)

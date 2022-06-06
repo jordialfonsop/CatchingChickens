@@ -161,22 +161,25 @@ public class ChickenDeleater : MonoBehaviour
             SoundManager.Instance.PlayChickenKilled();
             timeLastEaten = timer.GetComponent<Timer>().timeRemaining;
 
-            if (best_chicken.CompareTag("GoldenChicken"))
-            {
-                if(foxInBarnyard1){
-                    PointSystem.Instance.Erase3PointsP1();
-                }else if(foxInBarnyard2){
-                    PointSystem.Instance.Erase3PointsP2();
+            if( timer.GetComponent<Timer>().timeRemaining > 0){
+                if (best_chicken.CompareTag("GoldenChicken"))
+                {
+                    if(foxInBarnyard1){
+                        PointSystem.Instance.Erase3PointsP1();
+                    }else if(foxInBarnyard2){
+                        PointSystem.Instance.Erase3PointsP2();
+                    }
+                }
+                else
+                {
+                    if(foxInBarnyard1){
+                        PointSystem.Instance.ErasePointP1();
+                    }else if(foxInBarnyard2){
+                        PointSystem.Instance.ErasePointP2();
+                    }
                 }
             }
-            else
-            {
-                if(foxInBarnyard1){
-                    PointSystem.Instance.ErasePointP1();
-                }else if(foxInBarnyard2){
-                    PointSystem.Instance.ErasePointP2();
-                }
-            }
+            
         }
     }
 }
