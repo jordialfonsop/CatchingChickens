@@ -78,9 +78,9 @@ public class Fox : MonoBehaviour
             if ((dx > 0.7 && dz > 0.7)||(dx < -0.7 && dz < -0.7)||(dx < -0.7 && dz > 0.7)||(dx > 0.7 && dz < -0.7)){
                 Quaternion rotation = Quaternion.LookRotation(v, Vector3.up);
                 transform.rotation = rotation;
-                transform.position += v * Time.deltaTime;
+                
             }
-            
+            transform.position += v * Time.deltaTime;
         }
     }
 }
