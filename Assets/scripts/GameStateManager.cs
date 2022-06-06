@@ -48,7 +48,7 @@ public class GameStateManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (timer.GetComponent<Timer>().timeRemaining < time - timeBeforeFirstFox)
+        if (timer.GetComponent<Timer>().timeRemaining < time - timeBeforeFirstFox && timer.GetComponent<Timer>().timeRemaining > 0)
         {
             if (firstFoxSpawned)
             {
