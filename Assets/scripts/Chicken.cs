@@ -117,6 +117,9 @@ public class Chicken : MonoBehaviour
             {
                 v *= speed_chicken / Mathf.Sqrt(vx * vx + vz * vz);
             }
+            Quaternion rotation = Quaternion.LookRotation(v, Vector3.up);
+            transform.rotation = rotation;
+
             transform.position += v * Time.deltaTime;
         }
     }

@@ -63,7 +63,10 @@ public class Fox : MonoBehaviour
 
             Vector3 v = new Vector3(dx, 0, dz);
             v *= speed_fox / Mathf.Sqrt(dx * dx + dz * dz);
-            Debug.Log(v);
+            if ((dx > 0.2 && dz > 0.2)||(dx < -0.2 && dz < -0.2)||(dx < -0.2 && dz > 0.2)||(dx > 0.2 && dz < -0.2)){
+                Quaternion rotation = Quaternion.LookRotation(v, Vector3.up);
+                transform.rotation = rotation;
+            }
             transform.position += v * Time.deltaTime;
         }
     }

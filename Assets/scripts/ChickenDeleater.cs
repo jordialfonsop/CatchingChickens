@@ -9,6 +9,7 @@ public class ChickenDeleater : MonoBehaviour
     private List<GameObject> chickensInBarnyard1 = new List<GameObject>();
     private List<GameObject> chickensInBarnyard2 = new List<GameObject>();
     private List<GameObject> chickensNotInBarnyard = new List<GameObject>();
+    private List<GameObject> Foxes = new List<GameObject>();
     public GameObject Barnyard1;
     public GameObject Barnyard2;
     private float Barnyard1_min_x;
@@ -20,6 +21,13 @@ public class ChickenDeleater : MonoBehaviour
     public bool foxInGame;
     public GameObject timer;
     private float timeLastEaten;
+    float minx = 30;
+    float maxx = 70;
+
+    bool is_free(GameObject go)
+    {
+        return (go.transform.position.x > minx) && (go.transform.position.x < maxx);
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -37,48 +45,38 @@ public class ChickenDeleater : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if ((foxInGame)&&(timeLastEaten - 10 > timer.GetComponent<Timer>().timeRemaining))
+        GameObject best_chicken = null;
+        chickens = GameObject.FindGameObjectsWithTag("Chicken");
+        goldenChicken = GameObject.FindGameObjectsWithTag("GoldenChicken");
+        if (foxInBarnyard1)
         {
-            chickens = GameObject.FindGameObjectsWithTag("Chicken");
-            goldenChicken = GameObject.FindGameObjectsWithTag("GoldenChicken");
-            if (foxInBarnyard1)
+            chickensInBarnyard1 = new List<GameObject>();
+            Debug.Log("Fox in Barnyard1");
+            for (int i = 0; i < chickens.Length; i++)
             {
-                chickensInBarnyard1 = new List<GameObject>();
-                Debug.Log("Fox in Barnyard1");
-                for (int i = 0; i < chickens.Length; i++)
+                if (chickens[i].transform.position.x < Barnyard1_max_x)
                 {
-                    if (chickens[i].transform.position.x < Barnyard1_max_x)
-                    {
-                        chickensInBarnyard1.Add(chickens[i]);
-                    }
-                }
-                if ((goldenChicken.Length != 0)&&(goldenChicken[0].transform.position.x < Barnyard1_max_x))
-                {
-                    chickensInBarnyard1.Add(goldenChicken[0]);
-                }
-                if (chickensInBarnyard1.Count > 0)
-                {
-                    int randomChicken = 0;
-                    if (chickensInBarnyard1.Count > 1)
-                    {
-                        randomChicken = Random.Range(0, chickensInBarnyard1.Count);
-                    }
-                    if (chickensInBarnyard1[randomChicken].CompareTag("GoldenChicken"))
-                    {
-                        PointSystem.Instance.Erase3PointsP1();
-                    }
-                    else
-                    {
-                        PointSystem.Instance.ErasePointP1();
-                    }
-                    Destroy(chickensInBarnyard1[randomChicken]);
-                    SoundManager.Instance.PlayChickenKilled();
-                }
-                else
-                {
-                    Debug.Log("No chickens in Barnyard1");
+                    chickensInBarnyard1.Add(chickens[i]);
                 }
             }
+            if ((goldenChicken.Length != 0)&&(goldenChicken[0].transform.position.x < Barnyard1_max_x))
+            {
+                chickensInBarnyard1.Add(goldenChicken[0]);
+            }
+            if (chickensInBarnyard1.Count > 0)
+            {
+                int randomChicken = 0;
+                if (chickensInBarnyard1.Count > 1)
+                {
+                    randomChicken = Random.Range(0, chickensInBarnyard1.Count);
+                }
+                best_chicken = chickensInBarnyard1[randomChicken];
+            }
+            else
+            {
+                Debug.Log("No chickens in Barnyard1");
+            }
+        }
             else if (foxInBarnyard2)
             {
                 chickensInBarnyard2 = new List<GameObject>();
@@ -102,17 +100,7 @@ public class ChickenDeleater : MonoBehaviour
                     {
                         randomChicken = Random.Range(0, chickensInBarnyard2.Count);
                     }
-                    
-                    if (chickensInBarnyard2[randomChicken].CompareTag("GoldenChicken"))
-                    {
-                        PointSystem.Instance.Erase3PointsP2();
-                    }
-                    else
-                    {
-                        PointSystem.Instance.ErasePointP2();
-                    }
-                    Destroy(chickensInBarnyard2[randomChicken]);
-                    SoundManager.Instance.PlayChickenKilled();
+                    best_chicken = chickensInBarnyard2[randomChicken];
                 }
                 else
                 {
@@ -124,6 +112,7 @@ public class ChickenDeleater : MonoBehaviour
             {
                 Debug.Log("Fox in area");
                 chickensNotInBarnyard = new List<GameObject>();
+                
                 for (int i = 0; i < chickens.Length; i++)
                 {
                     if ((chickens[i].transform.position.x > Barnyard1_max_x) && (chickens[i].transform.position.x < Barnyard2_min_x))
@@ -137,21 +126,57 @@ public class ChickenDeleater : MonoBehaviour
                 }
                 if (chickensNotInBarnyard.Count > 0)
                 {
-                    int randomChicken = 0;
                     if (chickensNotInBarnyard.Count > 1)
                     {
-                        randomChicken = Random.Range(0, chickensNotInBarnyard.Count);
+                        GameObject Fox = GameObject.FindGameObjectsWithTag("Fox")[0];
+                        float x = Fox.transform.position.x;
+                        float z = Fox.transform.position.z;
+                        float best_distance = 1000;
+                        for (int i = 0; i < chickensNotInBarnyard.Count; i++)
+                        {
+                            GameObject myChicken = chickensNotInBarnyard[i];
+                            if (is_free(myChicken))
+                            {
+                                float chickenx = myChicken.transform.position.x;
+                                float chickenz = myChicken.transform.position.z;
+                                float d = Mathf.Sqrt((x - chickenx) * (x - chickenx) + (z - chickenz) * (z - chickenz));
+                                if (d < best_distance)
+                                {
+                                    best_chicken = myChicken;
+                                    best_distance = d;
+                                }
+                            }
+                        }
                     }
-                    Destroy(chickensNotInBarnyard[randomChicken]);
-                    SoundManager.Instance.PlayChickenKilled();
                 }
                 else
                 {
                     Debug.Log("No chickens in Playarea");
                 }                 
-
-            }
+            
+        }
+        if ((foxInGame)&&(timeLastEaten - 10 > timer.GetComponent<Timer>().timeRemaining))
+        {
+            Destroy(best_chicken);
+            SoundManager.Instance.PlayChickenKilled();
             timeLastEaten = timer.GetComponent<Timer>().timeRemaining;
+
+            if (best_chicken.CompareTag("GoldenChicken"))
+            {
+                if(foxInBarnyard1){
+                    PointSystem.Instance.Erase3PointsP1();
+                }else if(foxInBarnyard2){
+                    PointSystem.Instance.Erase3PointsP2();
+                }
+            }
+            else
+            {
+                if(foxInBarnyard1){
+                    PointSystem.Instance.ErasePointP1();
+                }else if(foxInBarnyard2){
+                    PointSystem.Instance.ErasePointP2();
+                }
+            }
         }
     }
 }
