@@ -126,8 +126,6 @@ public class ChickenDeleater : MonoBehaviour
                 }
                 if (chickensNotInBarnyard.Count > 0)
                 {
-                    //if (chickensNotInBarnyard.Count >= 1)
-                    //{
                         GameObject Fox = GameObject.FindGameObjectsWithTag("Fox")[0];
                         float x = Fox.transform.position.x;
                         float z = Fox.transform.position.z;
@@ -157,7 +155,6 @@ public class ChickenDeleater : MonoBehaviour
                                 best_distance = d;
                             }
                         }
-                    //}
                 }
                 else
                 {
