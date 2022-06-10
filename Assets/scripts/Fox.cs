@@ -70,17 +70,23 @@ public class Fox : MonoBehaviour
                     best_distance = d;
                 }
             }
-            float dx = best_chicken.transform.position.x - transform.position.x;
-            float dz = best_chicken.transform.position.z - transform.position.z;
 
-            Vector3 v = new Vector3(dx, 0, dz);
-            v *= speed_fox / Mathf.Sqrt(dx * dx + dz * dz);
-            if ((dx > 0.7 && dz > 0.7)||(dx < -0.7 && dz < -0.7)||(dx < -0.7 && dz > 0.7)||(dx > 0.7 && dz < -0.7)){
-                Quaternion rotation = Quaternion.LookRotation(v, Vector3.up);
-                transform.rotation = rotation;
-                
+            if (best_chicken != null)
+            {
+                float dx = best_chicken.transform.position.x - transform.position.x;
+                float dz = best_chicken.transform.position.z - transform.position.z;
+
+                Vector3 v = new Vector3(dx, 0, dz);
+                v *= speed_fox / Mathf.Sqrt(dx * dx + dz * dz);
+                if ((dx > 0.7 && dz > 0.7) || (dx < -0.7 && dz < -0.7) || (dx < -0.7 && dz > 0.7) || (dx > 0.7 && dz < -0.7))
+                {
+                    Quaternion rotation = Quaternion.LookRotation(v, Vector3.up);
+                    transform.rotation = rotation;
+
+                }
+                transform.position += v * Time.deltaTime;
             }
-            transform.position += v * Time.deltaTime;
+            
         }
     }
 }
