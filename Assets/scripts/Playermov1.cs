@@ -15,6 +15,13 @@ public class Playermov1 : MonoBehaviour
     private GameObject fox;
     public GameObject timer;
     public GameObject FoxEater;
+
+    //LoadingSystem
+    public GameObject LoadP1;
+
+    float time = 5;
+    float value = 0;
+
     [System.NonSerialized]
     public bool chicken_caught;
     private bool fox_caught;
@@ -36,6 +43,7 @@ public class Playermov1 : MonoBehaviour
         chicken_caught = false;
         circle_fox.SetActive(false);
         circle_battle_fox.SetActive(false);
+        LoadP1.SetActive(false);
         fox_caught = false;
         battling_fox = false;
         itsBarnyard_min_x = itsBarnyard.transform.position.x - itsBarnyard.GetComponent<Barnyard>().xDepth;
@@ -46,6 +54,9 @@ public class Playermov1 : MonoBehaviour
         oponentBarnyard_max_x = oponentBarnyard.transform.position.x + oponentBarnyard.GetComponent<Barnyard>().xDepth;
         oponentBarnyard_min_z = oponentBarnyard.transform.position.z - oponentBarnyard.GetComponent<Barnyard>().zDepth;
         oponentBarnyard_max_z = oponentBarnyard.transform.position.z + oponentBarnyard.GetComponent<Barnyard>().zDepth;
+        LoadTimerSystem.Instance.InitTimers();
+
+
     }
 
     // Update is called once per frame
@@ -85,10 +96,15 @@ public class Playermov1 : MonoBehaviour
             SoundManager.Instance.PlayFoxCaughtRelease();
             FoxEater.GetComponent<ChickenDeleater>().foxInBarnyard2 = true;
         }
-
+        if(battling_fox == true)
+        {
+            LoadTimerSystem.Instance.LoadTimerP1();
+        }
         if ((time_fox_caught- 5> timer.GetComponent<Timer>().timeRemaining) && (battling_fox)){
             circle_battle_fox.SetActive(false);
+            LoadP1.SetActive(false);
             battling_fox = false;
+            LoadTimerSystem.Instance.InitTimers();
             Destroy(fox);
             SoundManager.Instance.PlayFoxKill();
             FoxEater.GetComponent<ChickenDeleater>().foxInGame = false;
@@ -128,10 +144,12 @@ public class Playermov1 : MonoBehaviour
         }
         else if (transform.position.x < itsBarnyard_max_x)
         {
+            
             if (other.gameObject.CompareTag("Fox"))
             {
                 Debug.Log("Battling fox");
                 other.gameObject.SetActive(false);
+                LoadP1.SetActive(true);
                 circle_battle_fox.SetActive(true);
                 battling_fox = true;
                 time_fox_caught = timer.GetComponent<Timer>().timeRemaining;
