@@ -19,9 +19,6 @@ public class Playermov1 : MonoBehaviour
     //LoadingSystem
     public GameObject LoadP1;
 
-    float time = 5;
-    float value = 0;
-
     [System.NonSerialized]
     public bool chicken_caught;
     private bool fox_caught;
