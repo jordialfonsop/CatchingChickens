@@ -21,8 +21,8 @@ public class ChickenDeleater : MonoBehaviour
     public bool foxInGame;
     public GameObject timer;
     private float timeLastEaten;
-    float minx = 25;
-    float maxx = 75;
+    float minx = 30;
+    float maxx = 70;
 
     bool is_free(GameObject go)
     {
@@ -126,11 +126,10 @@ public class ChickenDeleater : MonoBehaviour
             }
             if (chickensNotInBarnyard.Count > 0)
             {
-                    GameObject Fox = GameObject.FindGameObjectWithTag("Fox");
+                    GameObject Fox = GameObject.FindGameObjectsWithTag("Fox")[0];
                     float x = Fox.transform.position.x;
                     float z = Fox.transform.position.z;
                     float best_distance = 1000;
-                    best_chicken = null;
                     for (int i = 0; i < chickensNotInBarnyard.Count; i++)
                     {
                         GameObject myChicken = chickensNotInBarnyard[i];
@@ -186,6 +185,7 @@ public class ChickenDeleater : MonoBehaviour
                 Destroy(best_chicken);
                 SoundManager.Instance.PlayChickenKilled();
                 timeLastEaten = timer.GetComponent<Timer>().timeRemaining;
+                          
             }
             
         }

@@ -10,8 +10,8 @@ public class Fox : MonoBehaviour
     public float speed_fox;
     float minx = 30;
     float maxx = 70;
-    float minz = 0;
-    float maxz = 100;
+    float minz = 5;
+    float maxz = 95;
 
     // Params
 
@@ -19,7 +19,6 @@ public class Fox : MonoBehaviour
     {
         speed_fox = 15;
         chickens = GameObject.FindGameObjectsWithTag("Chicken");
-        golden_chicken = GameObject.FindGameObjectWithTag("GoldenChicken");
     }
 
     bool im_free()
@@ -61,17 +60,14 @@ public class Fox : MonoBehaviour
                     }
                 }
             }
-            if (golden_chicken)
-            {
-                if (is_free(golden_chicken)){
-                    float chickenx = golden_chicken.transform.position.x;
-                    float chickenz = golden_chicken.transform.position.z;
-                    float d = Mathf.Sqrt((x - chickenx) * (x - chickenx) + (z - chickenz) * (z - chickenz));
-                    if (d < best_distance)
-                    {
-                        best_chicken = golden_chicken;
-                        best_distance = d;
-                    }
+            if(golden_chicken){
+                float chickenx = golden_chicken.transform.position.x;
+                float chickenz = golden_chicken.transform.position.z;
+                float d = Mathf.Sqrt((x - chickenx) * (x - chickenx) + (z - chickenz) * (z - chickenz));
+                if (d < best_distance)
+                {
+                    best_chicken = golden_chicken;
+                    best_distance = d;
                 }
             }
 
