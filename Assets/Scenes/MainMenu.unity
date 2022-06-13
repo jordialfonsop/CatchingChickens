@@ -375,6 +375,9 @@ MonoBehaviour:
   FoxKill: {fileID: 8300000, guid: 7abcead456404fc488f249a633ed5275, type: 3}
   FoxFigth: {fileID: 8300000, guid: 146568e0d8553464d951fcd51ab0d71c, type: 3}
   GameOver: {fileID: 8300000, guid: 711d98ae13a3b2944864af78a940c0b7, type: 3}
+  Victory: {fileID: 0}
+  Cheering: {fileID: 0}
+  DingDingDing: {fileID: 0}
   Quit: {fileID: 8300000, guid: caa73b7adcd089e4196fc5ff6f5e04c0, type: 3}
 --- !u!1001 &360262302
 PrefabInstance:
@@ -1420,7 +1423,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9960f52f70dbf44ba4577fd0f817eb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  live: 0
+  live: 1
   manualSpeed: 0.005
   positions: []
 --- !u!4 &1915285908
