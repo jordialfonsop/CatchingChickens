@@ -18,6 +18,7 @@ public class Playermov1 : MonoBehaviour
 
     //LoadingSystem
     public GameObject LoadP1;
+    public bool foxIsActive;//is true if the fox is inside the own barnyard
 
     [System.NonSerialized]
     public bool chicken_caught;
@@ -52,6 +53,7 @@ public class Playermov1 : MonoBehaviour
         oponentBarnyard_min_z = oponentBarnyard.transform.position.z - oponentBarnyard.GetComponent<Barnyard>().zDepth;
         oponentBarnyard_max_z = oponentBarnyard.transform.position.z + oponentBarnyard.GetComponent<Barnyard>().zDepth;
         LoadTimerSystem.Instance.InitTimers();
+        foxIsActive = false;
 
 
     }
@@ -93,16 +95,29 @@ public class Playermov1 : MonoBehaviour
             SoundManager.Instance.PlayFoxCaughtRelease();
             FoxEater.GetComponent<ChickenDeleater>().foxInBarnyard2 = true;
         }
+        if (foxIsActive == true)
+        {
+            Debug.Log("fox is active");
+            fox.SetActive(true);
+            circle_battle_fox.SetActive(false);
+            Vector3 randomPosition = new Vector3(Random.Range(itsBarnyard_min_x + 5, itsBarnyard_max_x - 5), 0.5f, Random.Range(oponentBarnyard_min_z + 5, oponentBarnyard_max_z - 5));
+            fox.transform.position = randomPosition;
+            SoundManager.Instance.PlayFoxCaughtRelease();
+            foxIsActive = false;
+        }
         //if battling fox and inside barnyard
-        if(battling_fox == true){
+        if (battling_fox == true){
             if (transform.position.x < itsBarnyard_max_x)
             {
+                foxIsActive = false;
+
                 LoadTimerSystem.Instance.LoadTimerP1Subtract();
                 if (LoadTimerSystem.Instance.time <= 0)
                 {
                     circle_battle_fox.SetActive(false);
                     LoadP1.SetActive(false);
                     battling_fox = false;
+
                     LoadTimerSystem.Instance.InitTimers();
                     Destroy(fox);
                     SoundManager.Instance.PlayFoxKill();
@@ -113,6 +128,14 @@ public class Playermov1 : MonoBehaviour
             else
             {
                 LoadTimerSystem.Instance.LoadTimerP1Add();
+                if (LoadTimerSystem.Instance.time >= LoadTimerSystem.Instance.maxDuration)
+                {
+                    LoadP1.SetActive(false);
+                    battling_fox = false;
+                    foxIsActive = true;
+                    circle_battle_fox.SetActive(false);
+                    fox.SetActive(true);
+                }
 
             }
         }
@@ -155,6 +178,7 @@ public class Playermov1 : MonoBehaviour
             if (other.gameObject.CompareTag("Fox"))
             {
                 Debug.Log("Battling fox");
+                fox = other.gameObject;
                 other.gameObject.SetActive(false);
                 LoadP1.SetActive(true);
                 circle_battle_fox.SetActive(true);

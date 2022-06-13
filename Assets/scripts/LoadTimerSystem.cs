@@ -17,6 +17,7 @@ public class LoadTimerSystem : MonoBehaviour
     [SerializeField] public Text uiTextP2;
     [SerializeField] public RectTransform FxHolderP2;
 
+
     public float maxDuration;
     public float time;
     public float value;
@@ -31,6 +32,7 @@ public class LoadTimerSystem : MonoBehaviour
         maxDuration = 5;
          time = maxDuration;
          value = 0;
+
     }
 
     public void LoadTimerP1Subtract()
