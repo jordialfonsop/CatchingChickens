@@ -96,20 +96,30 @@ public class Playermov1 : MonoBehaviour
             SoundManager.Instance.PlayFoxCaughtRelease();
             FoxEater.GetComponent<ChickenDeleater>().foxInBarnyard2 = true;
         }
-        if(battling_fox == true)
-        {
-            LoadTimerSystem.Instance.LoadTimerP1();
+        //if battling fox and inside barnyard
+        if(battling_fox == true){
+            if (transform.position.x < itsBarnyard_max_x)
+            {
+                LoadTimerSystem.Instance.LoadTimerP1Subtract();
+                if (LoadTimerSystem.Instance.time <= 0)
+                {
+                    circle_battle_fox.SetActive(false);
+                    LoadP1.SetActive(false);
+                    battling_fox = false;
+                    LoadTimerSystem.Instance.InitTimers();
+                    Destroy(fox);
+                    SoundManager.Instance.PlayFoxKill();
+                    FoxEater.GetComponent<ChickenDeleater>().foxInGame = false;
+                    FoxEater.GetComponent<ChickenDeleater>().foxInBarnyard1 = false;
+                }
+            }
+            else
+            {
+                LoadTimerSystem.Instance.LoadTimerP1Add();
+
+            }
         }
-        if ((time_fox_caught- 5> timer.GetComponent<Timer>().timeRemaining) && (battling_fox)){
-            circle_battle_fox.SetActive(false);
-            LoadP1.SetActive(false);
-            battling_fox = false;
-            LoadTimerSystem.Instance.InitTimers();
-            Destroy(fox);
-            SoundManager.Instance.PlayFoxKill();
-            FoxEater.GetComponent<ChickenDeleater>().foxInGame = false;
-            FoxEater.GetComponent<ChickenDeleater>().foxInBarnyard1 = false;
-        }
+        
     }
     private void OnTriggerEnter(Collider other)
     {

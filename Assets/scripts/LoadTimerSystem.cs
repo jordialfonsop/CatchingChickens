@@ -17,9 +17,9 @@ public class LoadTimerSystem : MonoBehaviour
     [SerializeField] public Text uiTextP2;
     [SerializeField] public RectTransform FxHolderP2;
 
-
-    public float time = 5;
-    public float value = 0;
+    public float maxDuration;
+    public float time;
+    public float value;
 
 
     private void Awake()
@@ -28,24 +28,65 @@ public class LoadTimerSystem : MonoBehaviour
     }
     public void InitTimers()
     {
-         time = 5;
+        maxDuration = 5;
+         time = maxDuration;
          value = 0;
     }
 
-    public void LoadTimerP1()
+    public void LoadTimerP1Subtract()
     {
-        time -= Time.deltaTime;
-        value = time / 5;
+        if (time <= maxDuration)
+        {
+            time -= Time.deltaTime;
+        }
+        value = time / maxDuration;
 
         Debug.Log("P1: " + time);
         LoadTimerSystem.Instance.uiTextP1.text = $"{(int)time % 60:00}:{(int)((time - (int)time) * 100):00}";
         LoadTimerSystem.Instance.uiFillP1.fillAmount = value;
         LoadTimerSystem.Instance.FxHolderP1.rotation = Quaternion.Euler(90, 0, value * 360);
     }
-    public void LoadTimerP2()
+    public void LoadTimerP2Subtract()
     {
-        time -= Time.deltaTime;
-        value = time / 5;
+        if (time <= maxDuration)
+        {
+            time -= Time.deltaTime;
+        }
+        value = time / maxDuration;
+
+        Debug.Log("P2: " + time);
+        LoadTimerSystem.Instance.uiTextP2.text = $"{(int)time % 60:00}:{(int)((time - (int)time) * 100):00}";
+        LoadTimerSystem.Instance.uiFillP2.fillAmount = value;
+        LoadTimerSystem.Instance.FxHolderP2.rotation = Quaternion.Euler(90, 0, value * 360);
+    }
+    public void LoadTimerP1Add()
+    {
+        if (time <= maxDuration)
+        {
+            time += Time.deltaTime;
+        }
+        if (time > maxDuration)
+        {
+            time = maxDuration;
+        }
+        value = time / maxDuration;
+
+        Debug.Log("P1: " + time);
+        LoadTimerSystem.Instance.uiTextP1.text = $"{(int)time % 60:00}:{(int)((time - (int)time) * 100):00}";
+        LoadTimerSystem.Instance.uiFillP1.fillAmount = value;
+        LoadTimerSystem.Instance.FxHolderP1.rotation = Quaternion.Euler(90, 0, value * 360);
+    }
+    public void LoadTimerP2Add()
+    {
+        if (time <= maxDuration)
+        {
+            time += Time.deltaTime;
+        }
+        if (time > maxDuration)
+        {
+            time = maxDuration;
+        }
+        value = time / maxDuration;
 
         Debug.Log("P2: " + time);
         LoadTimerSystem.Instance.uiTextP2.text = $"{(int)time % 60:00}:{(int)((time - (int)time) * 100):00}";
