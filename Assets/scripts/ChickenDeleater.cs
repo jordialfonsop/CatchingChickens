@@ -185,7 +185,6 @@ public class ChickenDeleater : MonoBehaviour
                 Destroy(best_chicken);
                 SoundManager.Instance.PlayChickenKilled();
                 timeLastEaten = timer.GetComponent<Timer>().timeRemaining;
-                          
             }
             
         }

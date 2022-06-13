@@ -58,8 +58,8 @@ public class Chicken : MonoBehaviour
             float dZ2 = (z - maxz) * (z - maxz);
             if (dx2 != 0 && dX2 != 0 && dz2 != 0 && dZ2 != 0)
             {
-                vx += k_border / dx2 - 1 / dX2;
-                vz += k_border / dz2 - 1 / dZ2;
+                vx += k_border / dx2 - k_border / dX2;
+                vz += k_border / dz2 - k_border / dZ2;
             }
 
             // Fox repulsion
@@ -111,7 +111,7 @@ public class Chicken : MonoBehaviour
                 }
             }
 
-            // Update v, to clamp it (max velocity), amd update the position.
+            // Update v, to clamp it (max velocity), and update the position.
             Vector3 v = new Vector3(vx, 0, vz);
             if (Mathf.Sqrt(vx * vx + vz * vz) > speed_chicken)
             {
@@ -120,6 +120,9 @@ public class Chicken : MonoBehaviour
             Quaternion rotation = Quaternion.LookRotation(v, Vector3.up);
             transform.rotation = rotation;
 
+            if (this.tag == "GoldenChicken") {
+                v *= 2;
+            }
             transform.position += v * Time.deltaTime;
         }
     }
