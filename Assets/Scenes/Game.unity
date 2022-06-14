@@ -817,6 +817,11 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 1618236373555705056, guid: cd1cb5635f8dbe649adff6525a31cfd3,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4160097904938921555, guid: cd1cb5635f8dbe649adff6525a31cfd3,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -3715,6 +3720,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Barnyard Player 2
       objectReference: {fileID: 0}
+    - target: {fileID: 2773093827561719182, guid: d3897320547c4d74fb0bd158a434ddeb,
+        type: 3}
+      propertyPath: m_TagString
+      value: BaryardPlayer2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d3897320547c4d74fb0bd158a434ddeb, type: 3}
 --- !u!1 &1441800306 stripped
@@ -5178,8 +5188,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c29b81b52107fdd4aa032c3df9ac064f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Barnyard1: {fileID: 1521580304}
-  Barnyard2: {fileID: 1766669146}
   foxInBarnyard1: 0
   foxInBarnyard2: 0
   foxInGame: 0
@@ -6776,6 +6784,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Barnyard Player 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2773093827561719182, guid: d3897320547c4d74fb0bd158a434ddeb,
+        type: 3}
+      propertyPath: m_TagString
+      value: BaryardPlayer1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d3897320547c4d74fb0bd158a434ddeb, type: 3}
 --- !u!1001 &6769992083713527169
@@ -6858,6 +6871,11 @@ PrefabInstance:
         type: 3}
       propertyPath: MarkerID
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5261076004293080658, guid: a2aaaa094093a294aade9f5a5ce62bbb,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5400996672440554963, guid: a2aaaa094093a294aade9f5a5ce62bbb,
         type: 3}

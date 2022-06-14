@@ -26,6 +26,8 @@ TagManager:
   - Barnyard1
   - Barnyard2
   - GoldenChicken
+  - BaryardPlayer1
+  - BaryardPlayer2
   layers:
   - Default
   - TransparentFX

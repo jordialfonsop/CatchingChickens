@@ -10,8 +10,8 @@ public class Chicken : MonoBehaviour
     private GameObject[] chickens;
 
     public float speed_chicken;
-    float minx = 25;
-    float maxx = 75;
+    float minx = 20;
+    float maxx = 80;
     float minz = 0;
     float maxz = 100;
 
@@ -123,11 +123,15 @@ public class Chicken : MonoBehaviour
             Quaternion rotation = Quaternion.LookRotation(v, Vector3.up);
             transform.rotation = rotation;
 
-            if (this.tag == "GoldenChicken") {
-                v *= 2;
+            if (this.tag == "GoldenChicken")
+            {
+                v *= 1.5f;
             }
-
             transform.position += v * Time.deltaTime;
+            if (!im_free())
+            {
+                transform.position -= v * Time.deltaTime;
+            }
         }
     }
 }
