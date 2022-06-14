@@ -33,6 +33,7 @@ public class Playermov1 : MonoBehaviour
     private float oponentBarnyard_min_x;
     private float oponentBarnyard_max_x;
     private float time_fox_caught;
+    public Rigidbody rb;
     // Start is called before the first frame update
     void Start()
     {
@@ -71,6 +72,8 @@ public class Playermov1 : MonoBehaviour
                 Vector3 randomPosition = new Vector3(Random.Range(itsBarnyard_min_x+5, itsBarnyard_max_x-5), 0.5f, Random.Range(itsBarnyard_min_z+5, itsBarnyard_max_z-5));
                 chicken.transform.position = randomPosition;
                 chicken_caught = false;
+                rb = chicken.GetComponent<Rigidbody>();
+                rb.isKinematic = true;
                 if(circle == circle_chicken)
                     PointSystem.Instance.Add1PointP1();
                 if (circle == circle_golden_chicken) {
