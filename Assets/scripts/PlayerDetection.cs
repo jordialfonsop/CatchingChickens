@@ -59,26 +59,50 @@ public class PlayerDetection : MonoBehaviour
 
         if (Input.GetKey(KeyCode.LeftArrow))
         {
-            positions[markerId*2] += manualSpeed;
-            if (positions[markerId * 2] > worldLimits.x) positions[markerId * 2] = worldLimits.x;
+            positions[4] += manualSpeed;
+            if (positions[4] > worldLimits.x) positions[4] = worldLimits.x;
         }
 
         if (Input.GetKey(KeyCode.RightArrow))
         {
-            positions[markerId * 2] -= manualSpeed;
-            if (positions[markerId * 2] < 0) positions[markerId * 2] = 0;
+            positions[4] -= manualSpeed;
+            if (positions[4] < 0) positions[4] = 0;
         }
 
         if (Input.GetKey(KeyCode.UpArrow))
         {
-            positions[markerId * 2+1] += manualSpeed;
-            if (positions[markerId * 2+1] > worldLimits.y) positions[markerId * 2+1] = worldLimits.y;
+            positions[5] += manualSpeed;
+            if (positions[5] > worldLimits.y) positions[5] = worldLimits.y;
         }
 
         if (Input.GetKey(KeyCode.DownArrow))
         {
-            positions[markerId * 2+1] -= manualSpeed;
-            if (positions[markerId * 2+1] < 0) positions[markerId * 2+1] = 0;
+            positions[5] -= manualSpeed;
+            if (positions[5] < 0) positions[5] = 0;
+        }
+
+        if (Input.GetKey(KeyCode.A))
+        {
+            positions[0] += manualSpeed;
+            if (positions[0] > worldLimits.x) positions[0] = worldLimits.x;
+        }
+
+        if (Input.GetKey(KeyCode.D))
+        {
+            positions[0] -= manualSpeed;
+            if (positions[0] < 0) positions[0] = 0;
+        }
+
+        if (Input.GetKey(KeyCode.W))
+        {
+            positions[1] += manualSpeed;
+            if (positions[1] > worldLimits.y) positions[1] = worldLimits.y;
+        }
+
+        if (Input.GetKey(KeyCode.S))
+        {
+            positions[1] -= manualSpeed;
+            if (positions[1] < 0) positions[1] = 0;
         }
 
     }
